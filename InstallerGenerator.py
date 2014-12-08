@@ -15,9 +15,10 @@ if __name__=='__main__':
     installer.SetBuildDir(sys.argv[2])
     installer.SetKegOnly()
     # platform specific stuff
+    doPatchPathname = False
     if platform.mac_ver()[0]=='':
         # linux
-        installer.PatchPathname()
+        doPatchPathname=True
     elif int(platform.mac_ver()[0].split('.')[1])<8:
         # mac os < 10.8
         pass
@@ -30,3 +31,5 @@ if __name__=='__main__':
         shutil.copy2(os.path.join(thisScriptsDir, 'run.sh'), sys.argv[2])
     except OSError:
         pass
+    if doPatchPathname:
+        installer.PatchPathname()
