@@ -17,7 +17,7 @@ if [[ "$OS_TYPE" =~ 'Linux' ]]; then
 fi
 
 curDir="${PWD}"
-brewPathParts=("${curDir}" "installer/bin/brew");
+brewPathParts=("${curDir}" "bin/brew");
 printf -v brewPath '/%s' "${brewPathParts[@]%/}"
 
 $brewPath install --build-from-source hdf5

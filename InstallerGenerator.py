@@ -1,4 +1,6 @@
+import os
 import platform
+import shutil
 import sys
 
 from Installer import Installer
@@ -23,3 +25,8 @@ if __name__=='__main__':
         # mac os <= 10.8
         installer.SetLibc()
     installer.Build()
+    thisScriptsDir = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])))
+    try:
+        shutil.copy2(os.path.join(thisScriptsDir, 'run.sh'), sys.argv[2])
+    except OSError:
+        pass
