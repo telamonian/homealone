@@ -28,7 +28,7 @@ $brewPath install --build-from-source protobuf
 git clone git@git.assembla.com:roberts-lab.lm.git lm
 cd lm
 git checkout mpi_thread_multiple_tel
-pathToCellar=$(readlink -f ../installer/Cellar/)
+pathToCellar=$(readlink -f ../Cellar/)
 python config.py ${pathToCellar} > CMakeConfig.txt
 mkdir build
 cd build
