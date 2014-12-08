@@ -54,9 +54,5 @@ class Formula(object):
                 replacement = re.sub(find, repl, line, re.DOTALL)
                 replacement = [repline + '\n' for repline in replacement.split('\n')]
                 replacements.append((i, replacement))
-                try:
-                    print [re.search(find, line).group(1)]
-                except:
-                    pass
         for i,replacement in reversed(replacements):
             self._lines = self._lines[:i] + replacement + self._lines[i+1:]

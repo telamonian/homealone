@@ -3,7 +3,7 @@ import sys
 
 from Installer import Installer
 
-lmFormulaNames = ('protobuf','cmake','mpich2','hdf5','swig','pcre','python')
+lmFormulaNames = ('protobuf','cmake','mpich2','hdf5','szip','swig','pcre','python','open-mpi')
 lmOnlineFormulaNames = (('libsbml', 'https://raw.githubusercontent.com/telamonian/homebrew-libsbml/master/libsbml.rb'),)
 
 if __name__=='__main__':
