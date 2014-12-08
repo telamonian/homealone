@@ -1,3 +1,4 @@
+import platform
 import sys
 
 from Installer import Installer
@@ -11,5 +12,8 @@ if __name__=='__main__':
         installer.formulas.AddFormula(formulaName, url=url)
     installer.SetBuildDir(sys.argv[2])
     installer.SetKegOnly()
-    installer.SetLibc()
+    if platform.mac_ver()[0]=='' or int(platform.mac_ver()[0].split('.')[1])<8:
+        pass
+    else:
+        installer.SetLibc()
     installer.Build()
