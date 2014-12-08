@@ -18,7 +18,9 @@ fi
 
 curDir="${PWD}"
 brewPathParts=("${curDir}" "bin/brew");
+cellarPathParts=("${curDir}" "Cellar");
 printf -v brewPath '/%s' "${brewPathParts[@]%/}"
+printf -v cellarPath '/%s' "${cellarPathParts[@]%/}"
 
 $brewPath install --build-from-source hdf5
 $brewPath install --build-from-source --without-fortran mpich2
@@ -28,9 +30,11 @@ $brewPath install --build-from-source protobuf
 git clone git@git.assembla.com:roberts-lab.lm.git lm
 cd lm
 git checkout mpi_thread_multiple_tel
-pathToCellar=$(readlink -f ../Cellar/)
-python config.py ${pathToCellar} > CMakeConfig.txt
+python config.py ${cellarPath} > CMakeConfig.txt
 mkdir build
 cd build
-cmake ..
+# find the path to our newly installed copy of cmake
+cmakePath=$(find ${cellarPath} -name "cmake" -type f -perm +111 -exec ls {} \;)
+${cmakePath} ..
+make -j4
 cd "${curDir}"
