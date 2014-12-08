@@ -56,7 +56,7 @@ class Installer(object):
         with open(os.path.join(self.buildDir,'Library/Homebrew/extend/pathname.rb'),'r') as f:
             lines = f.readlines()
         for i,line in enumerate(lines):
-            lines[i] = re.sub('(\s*)gid = Process.groups.delete(old_stat.gid) { Process.gid }','\1gid = Process.gid',line)
+            lines[i] = re.sub(r'(\s*)gid = Process.groups.delete\(old_stat.gid\) { Process.gid }',r'\1gid = Process.gid',line)
         with open(os.path.join(self.buildDir,'Library/Homebrew/extend/pathname.rb'),'w') as f:
             for line in lines:
                 f.write(line)
