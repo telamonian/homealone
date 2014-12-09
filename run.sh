@@ -1,7 +1,7 @@
 #!/bin/bash
 # On Linux, 
 # install absolutely necessary linuxbrew dependencies (ruby, curl)
-if [[ "$OS_TYPE" =~ 'Linux' ]]; then
+if [[ $(uname -s) =~ 'Linux' ]]; then
   PKGS=""
   for PKG in build-essential curl git m4 ruby-dev texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
   do
