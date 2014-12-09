@@ -3,7 +3,7 @@
 # install absolutely necessary linuxbrew dependencies (ruby, curl)
 if [[ "$OS_TYPE" =~ 'Linux' ]]; then
   PKGS=""
-  for PKG in ruby-dev curl libcurl4-openssl-dev
+  for PKG in build-essential curl git m4 ruby-dev texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
   do
     PKGS+=$([[ "" == $(dpkg-query -W --showformat='${Status}\n' $PKG 2>&1 |grep "install ok installed") ]] && echo "$PKG " || echo "")
   done
