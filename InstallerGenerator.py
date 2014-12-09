@@ -19,11 +19,11 @@ if __name__=='__main__':
     if platform.mac_ver()[0]=='':
         # linux
         doPatchPathname=True
-    elif int(platform.mac_ver()[0].split('.')[1])<8:
-        # mac os < 10.8
+    elif int(platform.mac_ver()[0].split('.')[1])<9:
+        # mac os < 10.9
         pass
     else:
-        # mac os <= 10.8
+        # mac os <= 10.9
         installer.SetLibc()
     installer.Build()
     thisScriptsDir = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])))

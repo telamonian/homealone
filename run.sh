@@ -3,7 +3,7 @@
 # install absolutely necessary linuxbrew dependencies (ruby, curl)
 if [[ $(uname -s) =~ 'Linux' ]]; then
   PKGS=""
-  for PKG in build-essential curl git m4 ruby-dev texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev libxml2-dev zlib1g-dev
+  for PKG in python-dev python-setuptools build-essential curl git m4 ruby-dev texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev libxml2-dev zlib1g-dev
   do
     PKGS+=$([[ "" == $(dpkg-query -W --showformat='${Status}\n' $PKG 2>&1 |grep "install ok installed") ]] && echo "$PKG " || echo "")
   done
@@ -21,6 +21,9 @@ brewPathParts=("${curDir}" "bin/brew");
 cellarPathParts=("${curDir}" "Cellar");
 printf -v brewPath '/%s' "${brewPathParts[@]%/}"
 printf -v cellarPath '/%s' "${cellarPathParts[@]%/}"
+
+# start the brews with cmake
+$brewPath install --build-from-source cmake
 
 $brewPath install --build-from-source hdf5
 $brewPath install --build-from-source --without-fortran mpich2
