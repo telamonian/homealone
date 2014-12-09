@@ -18,9 +18,14 @@ fi
 
 curDir="${PWD}"
 brewPathParts=("${curDir}" "bin/brew");
+cachePathParts=("${curDir}" "cache");
 cellarPathParts=("${curDir}" "Cellar");
 printf -v brewPath '/%s' "${brewPathParts[@]%/}"
+printf -v cachePath '/%s' "${cachePathParts[@]%/}"
 printf -v cellarPath '/%s' "${cellarPathParts[@]%/}"
+
+mkdir ${cachePath} 2> /dev/null
+export HOMEBREW_CACHE=${cachePath}
 
 # start the brews with cmake
 $brewPath install --build-from-source cmake
