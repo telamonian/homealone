@@ -22,6 +22,7 @@ cellarPathParts=("${curDir}" "Cellar");
 printf -v brewPath '/%s' "${brewPathParts[@]%/}"
 printf -v cellarPath '/%s' "${cellarPathParts[@]%/}"
 
+$brewPath install --build-from-source lbzip2
 $brewPath install --build-from-source hdf5
 $brewPath install --build-from-source --without-fortran mpich2
 $brewPath install --build-from-source libsbml
